@@ -31,4 +31,3 @@ namespace QuickBuy.Repositorio.Config
         }
     }
 }
-}
