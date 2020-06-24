@@ -1,0 +1,1 @@
+Arquivo com as orientações de compilação para o TypeScript
