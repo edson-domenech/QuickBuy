@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Usuario } from "src/app/model/usuario";
 import { Router, ActivatedRoute } from "@angular/router";
+import { UsuarioServico } from "src/app/servicos/usuario/usuario.servico";
 
 @Component({
   selector: "app-login",
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
   //public usuarios = ["Usuário 1", "Usuário 2", "Usuário 3", "Usuário 4"];  
   //public usuarioAutenticado;
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private usuarioServico: UsuarioServico) {
   }
 
   ngOnInit(): void {
@@ -34,12 +35,24 @@ export class LoginComponent implements OnInit {
     alert(this.usuario.email + " - " + this.usuario.senha);
     this.usuarioAutenticado = this.usuario.email == "a" && this.usuario.senha == "a";
     */
-
+    /*  
     if (this.usuario.email == "eds@eds" && this.usuario.senha == "eds") {
         //localStorage.setItem("usuario-autenticado", "1");//HTML5 -> localStorage sempre fica guardado no navegador, não é controlado por sessão
         sessionStorage.setItem("usuario-autenticado", "1");//HTML5 -> sessionStorage é controlado por sessão
         this.router.navigate([this.returnUrl]);
     }
+    */
+
+    this.usuarioServico.verificarUsuario(this.usuario)
+      .subscribe(
+        data => {
+
+        },
+        err => {
+
+        }
+        
+      );
   }
 
 }
